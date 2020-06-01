@@ -38,29 +38,39 @@
             @endif
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example" class="display" style="width:100%">
+              <table class="table table-striped display responsive nowrap" style="width:100%" id="example">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>No</th>
                         <th>Nama</th>
+                        <th>Alamat</th>
                         <th>Jenis Kelamin</th>
                         <th>No Telepon</th>
+                        <th>Tanggal Lahir</th>
                         <th>Jabatan</th>
                         <th>Status</th>
                         <th>Tanggal Masuk</th>
+                        <th>Pendidikan</th>
+                        <th>Usia</th>
                         <th>Opsi</th>
                     </tr>
                 </thead>
                 <tbody>
                   @foreach ($dataKaryawan  as $item)
                   <tr>
-                      <td><a href="/dataKaryawan/{{ $item->id }}">{{ $item->id }}</a></td>
+                      <th></th>
+                      <td>{{ $item->id }}</td>
                       <td>{{ $item->nama }}</td>
+                      <td>{{ $item->alamat }}</td>
                       <td>{{ $item->jenis_kelamin }}</td>
                       <td>{{ $item->no_telepon }}</td>
+                      <td>{{ $item->tanggal_lahir }}</td>
                       <td>{{ $item->jabatan->nama_jabatan }}</td>
                       <td>{{ $item->status->status }}</td>
                       <td>{{ $item->tanggal_masuk }}</td>
+                      <td>{{ $item->pendidikan->pendidikan }}</td>
+                      <td>{{ $item->umur }}</td>
                       <td>
                         <form action="{{ route('dataKaryawan.edit', $item->id) }}" class="d-inline" method="POST">
                           @csrf
@@ -76,9 +86,7 @@
                   </tr>
                   @endforeach
                 </tbody>
-            </table>
-
-            
+              </table> 
             </div>
             {{-- //table kedua --}}
           

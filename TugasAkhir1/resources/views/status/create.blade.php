@@ -13,7 +13,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Status</li>
+              <li class="breadcrumb-item active">Pendidikan</li>
             </ol>
           </div>
         </div>
@@ -27,7 +27,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Input Status</h3>
+                <h3 class="card-title">Input Pendidikan</h3>
                 @if (session()->has('pesan'))
                   <div class="alert alert-success">
                     {{ session()->get('pesan') }}
@@ -44,11 +44,15 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="status">Status</label>
-                                    {{-- untuk name disesuaikan dengan field database --}}
-                                    <input type="text" class="form-control @error('status') is-invalid @enderror" id="status" name="status" value="{{ old('status') }}">
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="Karyawan" {{ old('status') == 'Karyawan' ? 'selected' : '' }}>Karyawan</option>
+                                        <option value="Kontrak" {{ old('status') == 'Kontrak' ? 'selected' : '' }}>Kontrak</option>
+                                        <option value="Magang" {{ old('status') == 'Magang' ? 'selected' : '' }}>Magang</option>
+                                    </select>
                                     @error('status')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
+                                </div>
                                 <button type="submit" class="btn btn-primary mb-2">Simpan</button>
                             </form>
                         </div>
@@ -71,8 +75,8 @@
     <!-- Main content -->
    
     <!-- /.content -->
-  </div>
+</div>
 
-
+    
 
 @endsection

@@ -125,9 +125,10 @@ class DataKaryawanController extends Controller
      * @param  \App\DataKaryawan  $dataKaryawan
      * @return \Illuminate\Http\Response
      */
-    public function destroy($dataKaryawan)
+    public function destroy($id)
     {
-        $dataKaryawan = DataKaryawan::findorFail($dataKaryawan)->delete();
+        $dataKaryawan = DataKaryawan::findorFail($id)->delete();
+        // Jabatan::where('jabatan_id', $id);
         return redirect('/dataKaryawan');
     }
 }

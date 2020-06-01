@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Status;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class StatusController extends Controller
 {
@@ -15,6 +15,7 @@ class StatusController extends Controller
      */
     public function index()
     {
+        
         $status = Status::all();
         return view('status.index', ['status' => $status]);
     }
@@ -91,9 +92,9 @@ class StatusController extends Controller
      * @param  \App\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function destroy($status)
+    public function destroy($id)
     {
-        $status = Status::findOrFail($status)->delete();
+        $status = Status::findOrFail($id)->delete();
         return redirect('status');
     }
 }

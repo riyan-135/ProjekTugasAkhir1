@@ -71,7 +71,7 @@
     <!-- Main content -->
    
     <!-- /.content -->
-  </div>
+</div>
 
 
 

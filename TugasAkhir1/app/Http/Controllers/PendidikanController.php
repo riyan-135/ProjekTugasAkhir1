@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendidikan;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class PendidikanController extends Controller
 {
@@ -91,9 +91,9 @@ class PendidikanController extends Controller
      * @param  \App\Pendidikan  $pendidikan
      * @return \Illuminate\Http\Response
      */
-    public function destroy($pendidikan)
+    public function destroy($id)
     {
-        $pendidikan = Pendidikan::findOrFail($pendidikan)->delete();
+        $pendidikan = Pendidikan::findOrFail($id)->delete();
         return redirect('/pendidikan');
     }
 }

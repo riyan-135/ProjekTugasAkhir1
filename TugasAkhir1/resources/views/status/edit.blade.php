@@ -44,12 +44,16 @@
                                 @method('PATCH')
                                 @csrf
                                 <div class="form-group">
-                                    <label for="status">Status</label>
-                                    {{-- untuk name disesuaikan dengan field database --}}
-                                    <input type="text" class="form-control @error('status') is-invalid @enderror" id="status" name="status" value="{{ $status->status }}">
-                                    @error('status')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
+                                  <label for="status">Status</label>
+                                    <select name="status" id="status" class="form-control">
+                                      <option value="Karyawan" {{ $status->status == 'Karyawan' ? 'selected' : '' }}> Karyawan </option>
+                                      <option value="Kontrak" {{ $status->status == 'Kontrak' ? 'selected' : '' }}> Kontrak </option>
+                                      <option value="Magang" {{ $status->status == 'Magang' ? 'selected' : '' }}> Magang </option>
+                                    </select>
+                                    @error('status_karyawan')
+                                  <div class="alert alert-danger">{{$message}}</div>
+                                    @enderror 
+                                </div>
                                 <button type="submit" class="btn btn-primary mb-2">Simpan</button>
                             </form>
                         </div>

@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Status extends Model
 {
     protected $guarded = [];
-    use softDeletes;
+
+    public function datakaryawan(){
+        return $this->hasMany(DataKaryawan::class , 'status_id', 'id');
+    }
 }

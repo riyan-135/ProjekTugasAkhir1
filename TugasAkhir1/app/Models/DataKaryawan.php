@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class DataKaryawan extends Model
 {
     protected $guarded = [];
-    use softDeletes;
 
     public function jabatan(){
         return $this->belongsTo(Jabatan::class, 'jabatan_id', 'id');

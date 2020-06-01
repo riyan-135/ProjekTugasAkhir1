@@ -17,7 +17,10 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
   <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ {{-- css datatables --}}
+ <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+ <link type="text/css" href='https://cdn.datatables.net/responsive/2.2.4/css/responsive.dataTables.min.css' rel='stylesheet'>
+ <link type="text/css" href='https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css' rel='stylesheet'>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     @include('.layout.header')
@@ -49,20 +52,30 @@
 <script src="{{ asset('bootstrap/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('bootstrap/popper.min.js') }}"></script>
 <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+{{-- Script datatables --}}
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
 @yield('js')
 <script>
-  $(document).ready(function() {
-    var table = $('#example').DataTable();
- 
-    $('#example tbody').on( 'click', 'tr', function () {
-        $(this).toggleClass('selected');
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        responsive: {
+            details: {
+                type: 'column',
+                target: 'tr'
+            }
+        },
+        columnDefs: [ {
+            className: 'control',
+            orderable: false,
+            targets:   0
+        } ],
+        order: [ 0, 'asc' ]
+        } );
     } );
- 
-    $('#button').click( function () {
-        alert( table.rows('.selected').data().length +' row(s) selected' );
-    } );
-} );
 </script>
+
 </body>
 </html>

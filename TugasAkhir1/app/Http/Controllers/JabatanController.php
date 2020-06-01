@@ -90,9 +90,9 @@ class JabatanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($jabatan)
+    public function destroy($id)
     {
-        $jabatan = Jabatan::findorFail($jabatan)->delete();
+        $jabatan = Jabatan::findorFail($id)->delete();
         return redirect('/jabatan');
     }
 }

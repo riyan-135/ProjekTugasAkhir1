@@ -17,7 +17,7 @@ class CreatePendidikansTable extends Migration
             $table->id();
             $table->string('pendidikan');
             $table->timestamps();
-            $table->softDeletes();
+            
         });
     }
 
